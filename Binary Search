@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+#define MAXN 100
+
+void Nhap(int a[], int& n) {
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+}
+void BinarySearch(int a[], int n, int x) {
+    int dem = 0;
+    int L = 0, R = n - 1;
+    while (L <= R) {
+        dem++;
+        int mid = (L + R) / 2;
+        if (a[mid] == x) {
+            cout << mid << endl;
+            cout << dem;
+            return;
+        }
+        if (a[mid] > x) {
+            R = mid - 1;
+        }
+        else {
+            L = mid + 1;
+        }
+    }
+    cout << -1;
+}
+int main() {
+    int a[MAXN], n, x;
+    Nhap(a, n);
+    cin >> x;
+    BinarySearch(a, n, x);
+    return 0;
+}
